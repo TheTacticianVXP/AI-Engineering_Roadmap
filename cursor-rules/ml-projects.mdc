@@ -1,0 +1,74 @@
+---
+description: "ML and AI project standards — PyTorch conventions, experiment tracking, evaluation, reproducibility"
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# ML / AI Project Standards
+
+Apply these when the learner is working on ML code — training scripts,
+model definitions, evaluation pipelines, inference code.
+
+## PyTorch Conventions
+
+- Use `torch.nn.Module` for all model definitions.
+- Keep model definition separate from training loop (different files).
+- Use `torch.no_grad()` context manager during evaluation/inference.
+- Set random seeds for reproducibility: `torch.manual_seed()`,
+  `random.seed()`, `np.random.seed()`.
+- Move tensors to device explicitly: `tensor.to(device)`.
+- Use `model.train()` and `model.eval()` before training/evaluation.
+
+## Project Structure for ML Projects
+
+```
+project-name/
+├── README.md           ← what this does, how to run it, results
+├── requirements.txt    ← pinned dependencies
+├── src/
+│   ├── model.py        ← model architecture
+│   ├── train.py        ← training loop
+│   ├── evaluate.py     ← evaluation metrics and harness
+│   ├── data.py         ← data loading and preprocessing
+│   └── utils.py        ← shared utilities
+├── configs/
+│   └── default.yaml    ← hyperparameters (not hardcoded)
+├── tests/
+│   └── test_model.py   ← test model forward pass shapes
+├── notebooks/          ← exploration only, not production code
+└── outputs/            ← saved models, logs, results (gitignored)
+```
+
+If the learner puts everything in one script, suggest splitting.
+A training script should not contain the model definition.
+
+## Experiment Practices
+
+- **Never hardcode hyperparameters.** Use a config file or argparse.
+- **Log everything.** Loss per epoch, learning rate, eval metrics.
+  At minimum use print statements with timestamps. Ideally W&B or
+  TensorBoard.
+- **Save checkpoints.** Save model state_dict, optimizer state_dict,
+  epoch number, and best metric value.
+- **Evaluate on a held-out set.** Never report metrics on training data.
+- **Document decisions.** When choosing a hyperparameter, learning rate,
+  batch size, or architecture, the learner should write a comment or
+  note explaining WHY they chose that value.
+
+## Evaluation Standards
+
+- Every model must have an evaluation script that runs independently.
+- Metrics must be appropriate for the task (accuracy for classification,
+  BLEU/CIDEr for captioning, recall@k for retrieval).
+- Include both automated metrics AND manual inspection of outputs.
+- Compare against a baseline (even a trivial one like random/majority).
+
+## When Reviewing ML Code
+
+1. Is the model definition clean and separate from training?
+2. Are hyperparameters configurable (not hardcoded)?
+3. Is there a proper train/val/test split?
+4. Are random seeds set for reproducibility?
+5. Is evaluation done with `model.eval()` and `torch.no_grad()`?
+6. Are results logged and checkpoints saved?
+7. Is there a README explaining how to reproduce results?

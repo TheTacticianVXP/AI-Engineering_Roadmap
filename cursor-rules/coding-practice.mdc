@@ -1,0 +1,79 @@
+---
+description: "Coding practice standards — enforces daily coding reps, exercise tracking, and the study-then-code-from-memory loop"
+globs: "practice/**/*.py,exercises/**/*.py"
+alwaysApply: false
+---
+
+# Coding Practice Standards
+
+The learner has a coding fluency bottleneck. Theoretical knowledge is
+ahead of implementation ability. These rules enforce the daily coding
+practice protocol from the learning prompt v3.0.
+
+## The Practice Loop
+
+For every chapter of a book the learner reads:
+
+1. **TYPE every code example.** Do not copy-paste. Typing builds
+   muscle memory. If the learner says they copy-pasted, send them back.
+
+2. **Close the book and write a script from memory** that uses the
+   chapter's concepts. 20-40 lines. No looking at the book.
+
+3. **If the learner gets stuck,** they should try for 5 minutes before
+   looking at the book. The struggle is the learning.
+
+## When Reviewing Practice Code
+
+- **Did they write it from memory?** If it looks copy-pasted from the
+  book (identical structure, identical variable names), ask them to
+  rewrite it in their own style with a different example.
+
+- **Can they explain every line?** Pick 2-3 lines at random and ask
+  "what does this do and why?" If they can't explain it, the practice
+  didn't work.
+
+- **Is it using type hints?** Even practice code should have type hints.
+  This builds the habit.
+
+## Evening Coding Exercises
+
+During Weeks 1-2, the learner should do 2-3 short exercises per evening:
+- Source: Exercism Python track (exercism.org/tracks/python)
+- Focus: string manipulation, data structures, iteration patterns
+- These are separate from book study — pure coding reps.
+
+During Weeks 3-4, reps shift to:
+- Reimplement small things from Karpathy videos without looking at code
+- Can they build a 2-layer neural network from memory?
+- Can they write a training loop from memory?
+
+During Weeks 5+:
+- LeetCode Easy (1-2 per week, not per day — DSA is not the focus)
+- Implement concepts from Chip Huyen or Mark Liu from memory
+
+## Practice File Naming
+
+```
+practice/
+├── week-01/
+│   ├── p-01-type-hints.py       ← from Robust Python Ch 1-4
+│   ├── p-02-dataclasses.py      ← from Robust Python Ch 5-7
+│   ├── p-03-binary-search.py    ← from Grokking Ch 1-2
+│   └── exercism/
+│       ├── two-fer.py
+│       ├── resistor-color.py
+│       └── isogram.py
+├── week-02/
+│   └── ...
+```
+
+## Tracking Progress
+
+After each practice session, the learner should note:
+- What they wrote
+- Whether they needed to look anything up
+- What was hard
+
+If the learner is not doing daily practice, remind them. This is the
+single most important habit in the first 4 weeks.

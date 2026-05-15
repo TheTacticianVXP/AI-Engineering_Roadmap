@@ -1,0 +1,72 @@
+---
+description: "Resource guidance — how to recommend study material from the Roadmap v5 or web search when the learner has a knowledge gap"
+globs: "**/*"
+alwaysApply: false
+---
+
+# Resource Guidance Protocol
+
+When the learner has a knowledge gap that prevents them from writing
+good code, use this protocol to recommend study material.
+
+## When to Recommend Study (vs. Just Answering)
+
+- **Small gap** (syntax, API usage, "how do I do X in library Y"):
+  Answer directly or point to specific doc page. No study assignment.
+
+- **Medium gap** (doesn't understand a concept needed for the task):
+  Point to a specific chapter or tutorial. Format:
+  ```
+  STUDY BEFORE CONTINUING:
+    Resource: [title, author, platform]
+    Section:  [exact chapters/pages]
+    Time:     [honest estimate]
+    Why:      [what gap this fills]
+    After:    [what they should be able to do after]
+  ```
+
+- **Critical gap** (missing foundation that will make all code fragile):
+  Stop everything. Assign the study. This could be a full day.
+  Do NOT hand-hold through critical gaps to maintain momentum.
+
+## The Roadmap v5 Resource Registry
+
+The learner follows Complete Roadmap v5 (3 files). The key resources by phase:
+
+```
+Phase 1A (Python):     Robust Python (Viafore), Fluent Python (Ramalho)
+Phase 1B (Math):       3Blue1Brown, DLAI Math Spec
+Phase 1C (Testing):    pytest (Okken), Clean Code (Martin)
+Phase 1D (DSA):        Grokking Algorithms (Bhargava)
+Phase 2A (PyTorch):    Karpathy Zero to Hero, nanoGPT
+Phase 2B (GenAI):      Mark Liu "Learn GenAI with PyTorch"
+Phase 2C (Pretrained): Hands-On LLMs (Alammar/Grootendorst)
+Phase 2D (CV):         Elgendy "DL for Vision Systems", CS231n, OpenCV
+Phase 3A (LLM Eng):    Chip Huyen "AI Engineering"
+Phase 3B (RAG):        Chip Huyen Ch 6, DLAI RAG courses
+Phase 3D (VLMs):       VLM book (O'Reilly), CLIP/LLaVA papers
+Phase 3E (Doc AI):     LayoutLMv3, Donut, PaddleOCR
+Phase 4D (DL Theory):  Ng DL Specialization, Reza book
+Phase 4E (Dist Train): HF Accelerate, DeepSpeed, vLLM docs
+Phase 4G (Alignment):  DLAI RLHF, DPO paper, TRL docs
+```
+
+## Rules for Recommendations
+
+1. **Be surgical.** Recommend specific sections, not entire books.
+   "Read Elgendy Ch 7 on object detection" — not "read the Elgendy book."
+
+2. **Prefer the roadmap resource if it covers the gap well.**
+   But if a better, more targeted resource exists, use that instead.
+
+3. **Never recommend a resource just because it's in the roadmap.**
+   The roadmap is an index, not a mandate.
+
+4. **Always verify** that the resource actually covers what you think.
+   Documentation changes. Books get updated.
+
+5. **Match depth to need.** A 20-minute doc page vs. a 2-hour chapter
+   vs. a full day course. Be honest about what's needed.
+
+6. **Include source.** Say where the recommendation came from:
+   "Roadmap Phase 2D" or "web search" or "official PyTorch docs."

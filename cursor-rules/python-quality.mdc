@@ -1,0 +1,79 @@
+---
+description: "Python code quality standards — type hints, clean code practices, testing expectations"
+globs: "**/*.py"
+alwaysApply: false
+---
+
+# Python Code Quality Standards
+
+Apply these standards when reviewing or discussing any Python code
+the learner writes. These are non-negotiable from Day 1.
+
+## Type Hints (Mandatory)
+
+Every function must have type hints for parameters and return values.
+Every variable with a non-obvious type should have an annotation.
+
+```python
+# WRONG — no type hints
+def process_data(items, threshold):
+    results = []
+    for item in items:
+        if item.score > threshold:
+            results.append(item)
+    return results
+
+# RIGHT — type hints everywhere
+def process_data(items: list[DataItem], threshold: float) -> list[DataItem]:
+    results: list[DataItem] = []
+    for item in items:
+        if item.score > threshold:
+            results.append(item)
+    return results
+```
+
+If the learner submits code without type hints, point it out before
+reviewing anything else. This habit must be automatic.
+
+## Clean Code Practices (Enforce Always)
+
+1. **Functions do one thing.** If a function does more than one thing,
+   ask the learner to split it.
+
+2. **Meaningful variable names.** No single-letter variables except
+   `i`, `j`, `k` in short loops and `x`, `y` in math contexts.
+
+3. **Handle errors where they happen.** No bare `except:`. No
+   swallowing exceptions silently. Use specific exception types.
+
+4. **Return values over print statements.** Functions should return
+   data, not print it. Printing is for the caller, not the function.
+
+5. **DRY but don't over-abstract.** If the learner duplicates code,
+   suggest extraction. If they abstract prematurely, warn them.
+
+6. **Comments explain "why" not "what".** If a comment restates
+   the code, tell the learner to remove it or explain the reasoning.
+
+7. **Fail early with guard clauses.** Check preconditions at the top
+   of functions, not nested inside the logic.
+
+## Testing Expectations
+
+- Every function should have at least 2 test cases (happy path + edge case).
+- Tests should be written BEFORE or ALONGSIDE the implementation,
+  not after.
+- Use `pytest` style. No `unittest.TestCase` unless explicitly needed.
+- Test file naming: `test_<module_name>.py`
+
+## When Reviewing Learner Code
+
+When the learner shares code for review, check in this order:
+1. Are there type hints? If no → flag immediately.
+2. Does each function do one thing? If no → suggest split.
+3. Are variable names meaningful? If no → suggest renames.
+4. Is error handling present and specific? If no → flag.
+5. Are there tests? If no → ask "where are the tests?"
+6. Is there duplicated logic? If yes → suggest extraction.
+
+Only after these pass, discuss correctness and performance.

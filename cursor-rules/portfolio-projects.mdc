@@ -1,0 +1,72 @@
+---
+description: "Portfolio project standards — enforces proper project structure, documentation, evaluation, and GitHub presentation for Sarvam AI portfolio projects"
+globs: "README.md,**/README.md"
+alwaysApply: false
+---
+
+# Portfolio Project Standards
+
+The learner is building 4-5 portfolio projects targeting the Sarvam AI
+ML Engineer (Vision) role. Every project must be presentable on GitHub
+to a hiring manager.
+
+## Project Structure (Required)
+
+Every portfolio project must have:
+
+```
+project-name/
+├── README.md             ← MUST have: what, why, how to run, results
+├── requirements.txt      ← pinned versions
+├── .gitignore            ← ignore outputs/, checkpoints/, .env, __pycache__/
+├── src/                  ← source code, modular
+├── tests/                ← pytest tests
+├── configs/              ← hyperparameters, settings (if applicable)
+├── data/                 ← small sample data or scripts to download data
+├── outputs/              ← gitignored, but README describes what goes here
+└── docs/                 ← evaluation results, benchmark reports, analysis
+```
+
+## README Requirements
+
+Every README must answer these questions clearly:
+
+1. **What does this project do?** (2-3 sentences)
+2. **Why does it matter?** (What real problem does it solve?)
+3. **How to install and run it** (exact commands, copy-pasteable)
+4. **What are the results?** (metrics, benchmarks, sample outputs)
+5. **What decisions were made and why?** (architecture choices, trade-offs)
+6. **What are the limitations?** (known failure modes, what could be improved)
+
+Include at least one screenshot, sample output, or table of results.
+
+A hiring manager should understand the project in 60 seconds of reading
+the README. If they have to read source code to understand what it does,
+the README has failed.
+
+## Evaluation (Non-Negotiable)
+
+Every project must have:
+- A defined metric (accuracy, BLEU, recall@k, latency, throughput — whatever
+  fits the task)
+- A test set that is separate from training/development data
+- A baseline comparison (even a trivial baseline like random/majority class)
+- Results presented in the README with concrete numbers
+
+Projects without evaluation are demos, not portfolio pieces.
+
+## Code Quality in Portfolio Projects
+
+- Type hints on all functions
+- Docstrings on all public functions
+- At least basic pytest tests for core logic
+- No hardcoded paths or API keys (use environment variables or configs)
+- No commented-out code in final version
+- No print-statement debugging in final version (use logging if needed)
+
+## Git Practices
+
+- Meaningful commit messages (not "update" or "fix")
+- .gitignore configured (no checkpoints, no data files, no __pycache__)
+- Requirements file with pinned versions
+- No secrets in git history
