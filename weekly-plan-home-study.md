@@ -2,12 +2,14 @@
 
 ```
 USE CASE:      You are not working. Full-time study to get job-ready.
-APPLIES WITH:  v5-FILE1-CURRICULUM.md (same resources, same phases)
-               v5-FILE3-RESOURCE-REGISTRY.md (same vetting)
-               learning-prompt-v3-1.md (use Rungs 1→2→3, skip office sections)
-NOTE:          No office production code track. No mini-project extraction.
-               All coding practice comes from exercises, assignments, and
-               portfolio projects.
+APPLIES WITH:  Curriculum file (same resources, same phases)
+               Resource Registry (same vetting)
+               Learning Prompt — Home Study Variant
+NOTE:          No office production code. Top-down exposure comes from
+               OPEN-SOURCE CODEBASE READING (see learning prompt for
+               the full protocol and which repos to read per phase).
+               The afternoon practice block includes codebase reading
+               alongside exercises and project work.
 ```
 
 ---
@@ -45,19 +47,36 @@ WEEKLY TOTAL:    13 × 5 + 24 = ~89 hrs/week foundation study
 The office plan has dual-exposure: production code teaches you patterns
 from the top, books teach you fundamentals from the bottom.
 
-This plan has NO top-down exposure. You compensate by:
-  1. Spending more time on code-along resources (Karpathy, Mark Liu,
-     CS231n assignments) — these ARE your "production code"
-  2. Reading open-source codebases as a substitute for office code
-     (nanoGPT, vLLM, HF Transformers — the plan already includes these)
-  3. Starting portfolio projects EARLIER (Week 4 instead of Week 5-6)
-     because projects force you to write real code
-  4. More Exercism / coding practice — your only source of daily reps
-     outside of books
+This plan replaces production code with OPEN-SOURCE CODEBASE READING
+as the top-down learning channel. You compensate by:
 
-The office plan's "mini-project extraction" protocol doesn't apply.
-Instead, your afternoon block (2:00-5:00 PM) is dedicated to building
-things: exercises, assignments, and eventually portfolio projects.
+  1. Reading one open-source codebase per phase using the 5-step
+     protocol in the learning prompt (survey → trace → break →
+     rebuild a module from scratch → document). This happens in
+     the afternoon practice block.
+     Phase 1-2: nanoGPT, micrograd (small, clean, Karpathy's code)
+     Phase 2:   timm (pick one model like ViT, trace forward pass)
+     Phase 3:   LLaVA (VLM training/inference code)
+     Phase 4:   vLLM (serving infrastructure)
+
+  2. Spending more time on code-along resources (Karpathy, Mark Liu,
+     CS231n assignments) — these double as "production code" exposure
+
+  3. Starting portfolio projects EARLIER (Week 5 instead of Week 6)
+     because projects force you to write real code
+
+  4. More Exercism / coding practice (3-4 per day, not 2-3) plus
+     reviewing community solutions after each exercise for the code
+     review exposure you'd get from colleagues
+
+  5. Rebuilding one open-source module per week from scratch starting
+     Week 3 (same as the office plan's mini-project extraction, but
+     with public repos instead of proprietary code)
+
+The afternoon block (2:00-5:00 PM) is split between:
+  - Exercises and practice scripts (daily)
+  - Open-source codebase reading and module rebuilds (2-3 times/week)
+  - Portfolio project work (from Week 5 onward)
 ```
 
 ---
@@ -81,8 +100,12 @@ BLOCK 2 (mid-morning, 15 hrs):
 BLOCK 3 (afternoon practice, 15 hrs):
   EVERY DAY: Type examples from the morning's reading,
   then close the book and write a 20-40 line practice script.
-  Mon-Fri: 2-3 Exercism exercises per day .............. 5 hrs
-  Mon-Fri: Practice scripts from Robust Python chapters  10 hrs
+  Mon-Wed: Practice scripts from Robust Python chapters  6 hrs
+  Mon-Wed: 3-4 Exercism exercises per day .............. 4 hrs
+  Thu:     CODEBASE READING — clone nanoGPT, survey the
+           repo structure, read README, run it ......... 3 hrs
+  Fri:     CODEBASE READING — trace nanoGPT model.py
+           line by line, annotate every function ....... 2 hrs
 
 BLOCK 4 (evening, 7.5 hrs):
   Read Clean Code Ch 1-6 ............................... 4 hrs
@@ -155,8 +178,15 @@ BLOCK 2 (mid-morning, 15 hrs):
 BLOCK 3 (afternoon practice, 15 hrs):
   Mon-Tue: Math practice — NumPy implementations of
            LA operations, gradient descent from scratch . 4 hrs
-  Wed-Fri: Reimplement Karpathy exercises from memory .. 8 hrs
+  Wed:     CODEBASE READING — experiment with nanoGPT:
+           change hyperparams, break error handlers,
+           try alternative approaches .................. 3 hrs
+  Thu-Fri: Reimplement Karpathy exercises from memory .. 5 hrs
   Daily:   Exercism → shift to PyTorch exercises ....... 3 hrs
+
+  WEEKEND: REBUILD — pick nanoGPT's training loop or
+  micrograd's Value class. Write down the interface.
+  Build your version from scratch. Compare.
 
 BLOCK 4 (evening, 7.5 hrs):
   Karpathy — tokenization + nanoGPT source reading ..... 5 hrs
@@ -189,8 +219,10 @@ BLOCK 2 (mid-morning, 15 hrs):
 
 BLOCK 3 (afternoon practice, 15 hrs):
   Mon-Wed: Experiment with Mark Liu projects — modify
-           architectures, observe results ............... 8 hrs
-  Thu-Fri: Elgendy Ch 8-10 + OpenCV tutorials start .... 7 hrs
+           architectures, observe results ............... 6 hrs
+  Wed:     CODEBASE READING — clone timm, pick ViT model,
+           trace from model def → forward pass → output  3 hrs
+  Thu-Fri: Elgendy Ch 8-10 + OpenCV tutorials start .... 6 hrs
 
 BLOCK 4 (evening, 7.5 hrs):
   ViT paper — method section ........................... 2 hrs
@@ -263,9 +295,10 @@ COMPLETED:
   VLM book (O'Reilly) or HF VLM tutorials ............. 20 hrs
   Document AI study (LayoutLM, Donut, PaddleOCR) ....... 10 hrs
   Additional VLM papers (LLaVA-NeXT, Qwen-VL) ......... 5 hrs
+  CODEBASE READING — clone LLaVA repo, trace training
+    and inference code (connects to VLM papers) ........ 5 hrs
   Project 2 (Multimodal RAG) — M1-M2 .................. 14 hrs
-  Target Company research (blog posts, models) ................. 2 hrs
-  Practice + review .................................... 14 hrs
+  Practice + review .................................... 11 hrs
 
   ★ PHASE 3D-3E COMPLETE. PROJECT 2 ~40% DONE.
 ```
@@ -280,7 +313,9 @@ COMPLETED:
 ### WEEKS 9-10: Distributed Training + Project 3-4 Finish
 
 ```
-  Week 9:  Project 3 finish (M5) + Phase 4E-4G study ......  ~65 hrs
+  Week 9:  Project 3 finish (M5) + Phase 4E-4G study
+           + CODEBASE READING: vLLM (trace scheduler,
+             PagedAttention, one request flow) .............  ~65 hrs
   Week 10: Project 4 (Serving Infrastructure) + OSS start ..  ~65 hrs
 
   ★ COMPETITIVE FOR VISION ML ENGINEER ROLES BY WEEK 10
@@ -317,6 +352,7 @@ Full AI stack:        Week 28-30        Week 20
 ─────────────────────────────────────────────────────────
 
 The home plan is faster for pure study (no commute, no office overhead)
-but LACKS production code exposure. You compensate by doing more
-code-along resources and starting projects earlier.
+but LACKS production code exposure. You compensate with open-source
+codebase reading (see learning prompt for the full protocol), more
+code-along resources, and earlier project starts.
 ```
